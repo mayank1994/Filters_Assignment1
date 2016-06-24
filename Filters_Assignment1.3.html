@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<title>Filters_Assignment1.3</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<script>
+var app = angular.module('myAPP', []);
+app.controller('myCTR', function($scope) {
+    $scope.phones = ["Asus","Samsung","HTC","Oneplus","Apple","Acer","Lenevo","LG"];
+});
+</script>
+
+<body>
+
+<p><b>SORTED ARRAY IS AS FOLLOWS:</b></p>
+
+
+<div ng-app="myAPP" ng-controller="myCTR">
+
+<ol>
+<li ng-repeat="x in phones | orderBy">{{x}}</li>
+</ol>
+
+</div>
+
+
+
+
+</body>
+</html>
+
