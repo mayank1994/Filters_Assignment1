@@ -1,33 +1,84 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<title>Filters_Assignment1.3</title> 
+	<!-- 
+	Create an array of strings and sort it using the OrderBy Filter.	-->
 
-<title>Filters_Assignment1.3</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
-<script>
-var app = angular.module('myAPP', []);
-app.controller('myCTR', function($scope) {
-    $scope.phones = ["Asus","Samsung","HTC","Oneplus","Apple","Acer","Lenevo","LG"];
-});
-</script>
-
-<body>
-
-<p><b>SORTED ARRAY IS AS FOLLOWS:</b></p>
-
-
-<div ng-app="myAPP" ng-controller="myCTR">
-
-<ol>
-<li ng-repeat="x in phones | orderBy">{{x}}</li>
-</ol>
-
-</div>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 
 
+	<script type="text/javascript">
+		var mod=angular.module("myAPP",[]);
+		mod.controller("con",function($scope){
+				var some=function(){
+				alert("hello");
+			}
+			$scope.laptop = [
+				 	{Company: 'Alienware', Model: 'M14X'},
+		            {Company: 'Dell', Model: 'XPS13'},
+		            {Company: 'Acer', Model: 'Predator15'},
+		            {Company: 'Asus', Model: 'GL502'},
+		            {Company: 'Razer', Model: 'Blade14'},
+		            {Company: 'MSI', Model: 'GS62'}
+			];
+	
+		});
+	</script>
+</head>
 
+<body ng-app="myAPP">
+
+	<div ng-controller="con">
+			
+		<div class="container-fluid">
+			
+
+		
+			<h3> ORDER BY FILTER </h3> <br>
+	        <p><b> Click on table headings for sorting on their basis</b></p>
+
+
+		   <table class="table table-bordered table-striped table table-hover">
+    	
+   		   <thead>
+		      <tr class="info">
+		        <td>
+		          <a href="#" ng-click="sortType = 'Company'; sortReverse = !sortReverse">
+		            Name 
+		            <span ng-show="sortType == 'Name' && !sortReverse" class="sortdesc"></span>
+		            <span ng-show="sortType == 'Name' && sortReverse" class="sortinc"></span>
+		          </a>
+		        </td>
+		        <td>
+		          <a href="#" ng-click="sortType = 'Model'; sortReverse = !sortReverse">
+		           Last Name 
+		            <span ng-show="sortType == 'Model' && !sortReverse" class="sortdec"></span>
+		            <span ng-show="sortType == 'Model' && sortReverse" class="sortinc"></span>
+		          </a>
+		        </td>
+		       </tr>
+		    </thead>
+		    
+		    <tbody>
+		      <tr class="success"  ng-repeat="roll in laptop | orderBy:sortType:sortReverse ">
+		        <td>{{ roll.Company }}</td>
+		        <td>{{ roll.Model }}</td>
+		       </tr>
+		    </tbody>
+    
+ 		</table>
+ 		</div>
+
+	</div>
 
 </body>
 </html>
-
